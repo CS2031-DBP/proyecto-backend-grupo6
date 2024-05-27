@@ -8,10 +8,10 @@
         <version>3.2.5</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.grupo6</groupId>
+    <groupId>org.grupo6</groupId>
     <artifactId>main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>demo10</name>
+    <name>main</name>
     <description>main</description>
     <properties>
         <java.version>17</java.version>
@@ -45,6 +45,13 @@
             <artifactId>spring-security-test</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
     </dependencies>
 
     <build>

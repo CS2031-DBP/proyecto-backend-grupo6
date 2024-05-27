@@ -1,13 +1,13 @@
-package com.example.demo;
+package org.grupo6.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Demo10Application {
+public class MainApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Demo10Application.class, args);
+        SpringApplication.run(MainApplication.class, args);
     }
 
 }
