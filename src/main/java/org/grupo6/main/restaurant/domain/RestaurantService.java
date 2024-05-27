@@ -1,5 +1,6 @@
 package org.grupo6.main.restaurant.domain;
 
+import org.grupo6.main.exceptions.RestaurantNotFoundException;
 import org.grupo6.main.restaurant.dto.RestaurantDto;
 import org.grupo6.main.restaurant.infrastructure.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +14,7 @@ public class RestaurantService {
 
     @Autowired
     private RestaurantRepository restaurantRepository;
-    /*
+
     public List<RestaurantDto> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
         return restaurants.stream().map(this::convertToDTO).collect(Collectors.toList());
@@ -22,8 +23,8 @@ public class RestaurantService {
     public RestaurantDto createRestaurant(RestaurantDto restaurantDTO) {
         Restaurant restaurant = new Restaurant();
         restaurant.setNombre(restaurantDTO.getNombre());
-        /*
-        restaurant.setUbicacion(restaurantDTO.getUbicacion());
+
+        restaurant.setLocation(restaurantDTO.getLocation());
         restaurantRepository.save(restaurant);
         return convertToDTO(restaurant);
     }
@@ -38,7 +39,7 @@ public class RestaurantService {
         Restaurant restaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant no encontrado"));
         restaurant.setNombre(restaurantDTO.getNombre());
-        restaurant.setUbicacion(restaurantDTO.getUbicacion());
+        restaurant.setLocation(restaurantDTO.getLocation());
         restaurantRepository.save(restaurant);
         return convertToDTO(restaurant);
     }
@@ -53,7 +54,7 @@ public class RestaurantService {
         RestaurantDto restaurantDTO = new RestaurantDto();
         restaurantDTO.setId(restaurant.getId());
         restaurantDTO.setNombre(restaurant.getNombre());
-        restaurantDTO.setUbicacion(restaurant.getUbicacion());
+        restaurantDTO.setLocation(restaurant.getLocation());
         return restaurantDTO;
-    }*/
+    }
 }

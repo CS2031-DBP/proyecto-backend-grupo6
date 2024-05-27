@@ -8,34 +8,34 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
-@RequestMapping("/ubicaciones")
+@RequestMapping("/locations")
 public class LocationController {
     @Autowired
     private LocationService locationService;
 
     @GetMapping
-    public List<LocationDto> getAllUbicaciones() {
-        return locationService.getAllLocationes();
+    public List<LocationDto> getAllLocations() {
+        return locationService.getAllLocations();
     }
 
     @PostMapping
-    public LocationDto createUbicacion(@RequestBody LocationDto ubicacionDTO) {
-        return locationService.createLocation(ubicacionDTO);
+    public LocationDto createLocation(@RequestBody LocationDto locationDTO) {
+        return locationService.createLocation(locationDTO);
     }
-/*
+
     @GetMapping("/{id}")
-    public LocationDto getUbicacionById(@PathVariable Long id) {
-        return locationService.getUbicacionById(id);
+    public LocationDto getLocationById(@PathVariable Long id) {
+        return locationService.getLocationById(id);
     }
 
     @PutMapping("/{id}")
-    public LocationDto updateUbicacion(@PathVariable Long id, @RequestBody LocationDto ubicacionDTO) {
-        return locationService.updateUbicacion(id, ubicacionDTO);
+    public LocationDto updateLocation(@PathVariable Long id, @RequestBody LocationDto locationDTO) {
+        return locationService.updateLocation(id, locationDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUbicacion(@PathVariable Long id) {
-        locationService.deleteUbicacion(id);
+    public ResponseEntity<Void> deleteLocation(@PathVariable Long id) {
+        locationService.deleteLocation(id);
         return ResponseEntity.noContent().build();
-    }*/
+    }
 }

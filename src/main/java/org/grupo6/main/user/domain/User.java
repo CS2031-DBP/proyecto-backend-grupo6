@@ -5,7 +5,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "usuarios")
+@Table(name = "users")
 public class User {
 
     @Id
@@ -26,16 +26,16 @@ public class User {
 
     /*
     //Relaciones
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reserva> reservas;
 
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Reseña> reseñas;
 
     @ManyToMany
     @JoinTable(
-            name = "usuario_promocion",
-            joinColumns = @JoinColumn(name = "usuario_id"),
+            name = "user_promocion",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "promocion_id")
     )
     private List<Promocion> promociones;
