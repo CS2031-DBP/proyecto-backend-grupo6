@@ -17,31 +17,31 @@ public class RestaurantService {
 
     public List<RestaurantDto> getAllRestaurants() {
         List<Restaurant> restaurants = restaurantRepository.findAll();
-        return restaurants.stream().map(this::convertToDTO).collect(Collectors.toList());
+        return restaurants.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    public RestaurantDto createRestaurant(RestaurantDto restaurantDTO) {
+    public RestaurantDto createRestaurant(RestaurantDto restaurantDto) {
         Restaurant restaurant = new Restaurant();
-        restaurant.setNombre(restaurantDTO.getNombre());
+        restaurant.setNombre(restaurantDto.getNombre());
 
-        restaurant.setLocation(restaurantDTO.getLocation());
+        restaurant.setLocation(restaurantDto.getLocation());
         restaurantRepository.save(restaurant);
-        return convertToDTO(restaurant);
+        return convertToDto(restaurant);
     }
 
     public RestaurantDto getRestaurantById(Long id) {
         Restaurant restaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant no encontrado"));
-        return convertToDTO(restaurant);
+        return convertToDto(restaurant);
     }
 
-    public RestaurantDto updateRestaurant(Long id, RestaurantDto restaurantDTO) {
+    public RestaurantDto updateRestaurant(Long id, RestaurantDto restaurantDto) {
         Restaurant restaurant = restaurantRepository.findById(id)
                 .orElseThrow(() -> new RestaurantNotFoundException("Restaurant no encontrado"));
-        restaurant.setNombre(restaurantDTO.getNombre());
-        restaurant.setLocation(restaurantDTO.getLocation());
+        restaurant.setNombre(restaurantDto.getNombre());
+        restaurant.setLocation(restaurantDto.getLocation());
         restaurantRepository.save(restaurant);
-        return convertToDTO(restaurant);
+        return convertToDto(restaurant);
     }
 
     public void deleteRestaurant(Long id) {
@@ -50,11 +50,11 @@ public class RestaurantService {
         restaurantRepository.delete(restaurant);
     }
 
-    private RestaurantDto convertToDTO(Restaurant restaurant) {
-        RestaurantDto restaurantDTO = new RestaurantDto();
-        restaurantDTO.setId(restaurant.getId());
-        restaurantDTO.setNombre(restaurant.getNombre());
-        restaurantDTO.setLocation(restaurant.getLocation());
-        return restaurantDTO;
+    private RestaurantDto convertToDto(Restaurant restaurant) {
+        RestaurantDto restaurantDto = new RestaurantDto();
+        restaurantDto.setId(restaurant.getId());
+        restaurantDto.setNombre(restaurant.getNombre());
+        restaurantDto.setLocation(restaurant.getLocation());
+        return restaurantDto;
     }
 }

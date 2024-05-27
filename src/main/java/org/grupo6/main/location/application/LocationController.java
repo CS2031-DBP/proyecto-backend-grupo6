@@ -19,8 +19,8 @@ public class LocationController {
     }
 
     @PostMapping
-    public LocationDto createLocation(@RequestBody LocationDto locationDTO) {
-        return locationService.createLocation(locationDTO);
+    public LocationDto createLocation(@RequestBody LocationDto locationDto) {
+        return locationService.createLocation(locationDto);
     }
 
     @GetMapping("/{id}")
@@ -29,8 +29,8 @@ public class LocationController {
     }
 
     @PutMapping("/{id}")
-    public LocationDto updateLocation(@PathVariable Long id, @RequestBody LocationDto locationDTO) {
-        return locationService.updateLocation(id, locationDTO);
+    public LocationDto updateLocation(@PathVariable Long id, @RequestBody LocationDto locationDto) {
+        return locationService.updateLocation(id, locationDto);
     }
 
     @DeleteMapping("/{id}")

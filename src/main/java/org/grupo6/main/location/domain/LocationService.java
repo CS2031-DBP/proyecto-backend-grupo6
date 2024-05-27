@@ -17,32 +17,32 @@ public class LocationService {
 
     public List<LocationDto> getAllLocations() {
         List<Location> locations = locationRepository.findAll();
-        return locations.stream().map(this::convertToDTO).collect(Collectors.toList());
+        return locations.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
-    public LocationDto createLocation(LocationDto locationDTO) {
+    public LocationDto createLocation(LocationDto locationDto) {
         Location location = new Location();
-        location.setDireccion(locationDTO.getDireccion());
-        location.setCiudad(locationDTO.getCiudad());
-        location.setPais(locationDTO.getPais());
+        location.setDireccion(locationDto.getDireccion());
+        location.setCiudad(locationDto.getCiudad());
+        location.setPais(locationDto.getPais());
         locationRepository.save(location);
-        return convertToDTO(location);
+        return convertToDto(location);
     }
 
     public LocationDto getLocationById(Long id) {
         Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Ubicación no encontrada"));
-        return convertToDTO(location);
+        return convertToDto(location);
     }
 
-    public LocationDto updateLocation(Long id, LocationDto locationDTO) {
+    public LocationDto updateLocation(Long id, LocationDto locationDto) {
         Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Ubicación no encontrada"));
-        location.setDireccion(locationDTO.getDireccion());
-        location.setCiudad(locationDTO.getCiudad());
-        location.setPais(locationDTO.getPais());
+        location.setDireccion(locationDto.getDireccion());
+        location.setCiudad(locationDto.getCiudad());
+        location.setPais(locationDto.getPais());
         locationRepository.save(location);
-        return convertToDTO(location);
+        return convertToDto(location);
     }
 
     public void deleteLocation(Long id) {
@@ -51,12 +51,12 @@ public class LocationService {
         locationRepository.delete(location);
     }
 
-    private LocationDto convertToDTO(Location location) {
-        LocationDto locationDTO = new LocationDto();
-        locationDTO.setId(location.getId());
-        locationDTO.setDireccion(location.getDireccion());
-        locationDTO.setCiudad(location.getCiudad());
-        locationDTO.setPais(location.getPais());
-        return locationDTO;
+    private LocationDto convertToDto(Location location) {
+        LocationDto locationDto = new LocationDto();
+        locationDto.setId(location.getId());
+        locationDto.setDireccion(location.getDireccion());
+        locationDto.setCiudad(location.getCiudad());
+        locationDto.setPais(location.getPais());
+        return locationDto;
     }
 }

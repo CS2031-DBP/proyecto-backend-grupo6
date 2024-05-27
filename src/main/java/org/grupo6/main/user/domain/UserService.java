@@ -16,7 +16,7 @@ public class UserService {
     
     public List<UserDto> getAllUsers() {
         List<User> Users = userRepository.findAll();
-        return Users.stream().map(this::convertToDTO).collect(Collectors.toList());
+        return Users.stream().map(this::convertToDto).collect(Collectors.toList());
     }
 
     public UserDto createUser(UserDto UserDto) {
@@ -24,13 +24,13 @@ public class UserService {
         User.setNombre(UserDto.getNombre());
         User.setEmail(UserDto.getEmail());
         userRepository.save(User);
-        return convertToDTO(User);
+        return convertToDto(User);
     }
 /*
     public UserDto getUserById(Long id) {
         User User = userRepository.findById(id)
                 .orElseThrow(() -> new UserNotFoundException("User no encontrado"));
-        return convertToDTO(User);
+        return convertToDto(User);
     }
 
     public UserDto updateUser(Long id, UserDto UserDto) {
@@ -39,7 +39,7 @@ public class UserService {
         User.setNombre(UserDto.getNombre());
         User.setEmail(UserDto.getEmail());
         userRepository.save(User);
-        return convertToDTO(User);
+        return convertToDto(User);
     }
 
     public void deleteUser(Long id) {
@@ -48,7 +48,7 @@ public class UserService {
         userRepository.delete(User);
     }
 */
-    private UserDto convertToDTO(User User) {
+    private UserDto convertToDto(User User) {
         UserDto UserDto = new UserDto();
         UserDto.setId(User.getId());
         UserDto.setNombre(User.getNombre());

@@ -27,18 +27,18 @@ public class User {
     /*
     //Relaciones
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reserva> reservas;
+    private List<Reservation> reservations;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reseña> reseñas;
+    private List<Review> reviews;
 
     @ManyToMany
     @JoinTable(
-            name = "user_promocion",
+            name = "user_promotion",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "promocion_id")
+            inverseJoinColumns = @JoinColumn(name = "promotion_id")
     )
-    private List<Promocion> promociones;
+    private List<Promotion> promotiones;
     */
 
 
@@ -100,27 +100,27 @@ public class User {
 
 
     /*
-    public List<Reserva> getReservas() {
-        return reservas;
+    public List<Reservation> getReservations() {
+        return reservations;
     }
 
-    public void setReservas(List<Reserva> reservas) {
-        this.reservas = reservas;
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 
-    public List<Reseña> getReseñas() {
-        return reseñas;
+    public List<Review> getReviews() {
+        return reviews;
     }
 
-    public void setReseñas(List<Reseña> reseñas) {
-        this.reseñas = reseñas;
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
-    public List<Promocion> getPromociones() {
-        return promociones;
+    public List<Promotion> getPromotiones() {
+        return promotiones;
     }
 
-    public void setPromociones(List<Promocion> promociones) {
-        this.promociones = promociones;
+    public void setPromotiones(List<Promotion> promotiones) {
+        this.promotiones = promotiones;
     }*/
 }

@@ -20,22 +20,22 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(ReservationNotFoundException.class)
-    public ResponseEntity<String> handleReservaNotFoundException(ReservationNotFoundException ex) {
+    public ResponseEntity<String> handleReservationNotFoundException(ReservationNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(ReviewNotFoundException.class)
-    public ResponseEntity<String> handleReseñaNotFoundException(ReviewNotFoundException ex) {
+    public ResponseEntity<String> handleReviewNotFoundException(ReviewNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(PromotionNotFoundException.class)
-    public ResponseEntity<String> handlePromocionNotFoundException(PromotionNotFoundException ex) {
+    public ResponseEntity<String> handlePromotionNotFoundException(PromotionNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(EventNotFoundException.class)
-    public ResponseEntity<String> handleEventoNotFoundException(EventNotFoundException ex) {
+    public ResponseEntity<String> handleEventNotFoundException(EventNotFoundException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 

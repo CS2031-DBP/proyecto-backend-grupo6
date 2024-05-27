@@ -20,8 +20,8 @@ public class RestaurantController {
     }
 
     @PostMapping
-    public RestaurantDto createRestaurant(@RequestBody RestaurantDto restaurantDTO) {
-        return restaurantService.createRestaurant(restaurantDTO);
+    public RestaurantDto createRestaurant(@RequestBody RestaurantDto restaurantDto) {
+        return restaurantService.createRestaurant(restaurantDto);
     }
 
     @GetMapping("/{id}")
@@ -30,8 +30,8 @@ public class RestaurantController {
     }
 
     @PutMapping("/{id}")
-    public RestaurantDto updateRestaurant(@PathVariable Long id, @RequestBody RestaurantDto restaurantDTO) {
-        return restaurantService.updateRestaurant(id, restaurantDTO);
+    public RestaurantDto updateRestaurant(@PathVariable Long id, @RequestBody RestaurantDto restaurantDto) {
+        return restaurantService.updateRestaurant(id, restaurantDto);
     }
 
     @DeleteMapping("/{id}")
