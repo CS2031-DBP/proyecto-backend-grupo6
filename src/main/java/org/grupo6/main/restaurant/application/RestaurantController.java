@@ -9,34 +9,34 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/restaurantes")
+@RequestMapping("/restaurants")
 public class RestaurantController {
     @Autowired
-    private RestaurantService restauranteService;
+    private RestaurantService restaurantService;
     /*
     @GetMapping
-    public List<RestaurantDto> getAllRestaurantes() {
-        return restauranteService.getAllRestaurants();
+    public List<RestaurantDto> getAllRestaurants() {
+        return restaurantService.getAllRestaurants();
     }
 
     @PostMapping
-    public RestaurantDto createRestaurante(@RequestBody RestaurantDto restauranteDTO) {
-        return restauranteService.createRestaurante(restauranteDTO);
+    public RestaurantDto createRestaurant(@RequestBody RestaurantDto restaurantDTO) {
+        return restaurantService.createRestaurant(restaurantDTO);
     }
 
     @GetMapping("/{id}")
-    public RestaurantDto getRestauranteById(@PathVariable Long id) {
-        return restauranteService.getRestauranteById(id);
+    public RestaurantDto getRestaurantById(@PathVariable Long id) {
+        return restaurantService.getRestaurantById(id);
     }
 
     @PutMapping("/{id}")
-    public RestaurantDto updateRestaurante(@PathVariable Long id, @RequestBody RestaurantDto restauranteDTO) {
-        return restauranteService.updateRestaurante(id, restauranteDTO);
+    public RestaurantDto updateRestaurant(@PathVariable Long id, @RequestBody RestaurantDto restaurantDTO) {
+        return restaurantService.updateRestaurant(id, restaurantDTO);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteRestaurante(@PathVariable Long id) {
-        restauranteService.deleteRestaurante(id);
+    public ResponseEntity<Void> deleteRestaurant(@PathVariable Long id) {
+        restaurantService.deleteRestaurant(id);
         return ResponseEntity.noContent().build();
     }*/
 }

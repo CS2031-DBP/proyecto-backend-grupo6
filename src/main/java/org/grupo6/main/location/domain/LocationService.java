@@ -1,6 +1,7 @@
 package org.grupo6.main.location.domain;
 
 
+import org.grupo6.main.exceptions.LocationNotFoundException;
 import org.grupo6.main.location.dto.LocationDto;
 import org.grupo6.main.location.infrastructure.LocationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,48 +15,48 @@ public class LocationService {
     @Autowired
     private LocationRepository locationRepository;
 
-    public List<LocationDto> getAllLocationes() {
-        List<Location> ubicaciones = locationRepository.findAll();
-        return ubicaciones.stream().map(this::convertToDTO).collect(Collectors.toList());
+    public List<LocationDto> getAllLocations() {
+        List<Location> locations = locationRepository.findAll();
+        return locations.stream().map(this::convertToDTO).collect(Collectors.toList());
     }
 
-    public LocationDto createLocation(LocationDto ubicacionDTO) {
-        Location ubicacion = new Location();
-        ubicacion.setDireccion(ubicacionDTO.getDireccion());
-        ubicacion.setCiudad(ubicacionDTO.getCiudad());
-        ubicacion.setPais(ubicacionDTO.getPais());
-        locationRepository.save(ubicacion);
-        return convertToDTO(ubicacion);
+    public LocationDto createLocation(LocationDto locationDTO) {
+        Location location = new Location();
+        location.setDireccion(locationDTO.getDireccion());
+        location.setCiudad(locationDTO.getCiudad());
+        location.setPais(locationDTO.getPais());
+        locationRepository.save(location);
+        return convertToDTO(location);
     }
-    /*
+
     public LocationDto getLocationById(Long id) {
-        Location ubicacion = locationRepository.findById(id)
+        Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Ubicación no encontrada"));
-        return convertToDTO(ubicacion);
+        return convertToDTO(location);
     }
 
-    public LocationDto updateLocation(Long id, LocationDto ubicacionDTO) {
-        Location ubicacion = locationRepository.findById(id)
+    public LocationDto updateLocation(Long id, LocationDto locationDTO) {
+        Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Ubicación no encontrada"));
-        ubicacion.setDireccion(ubicacionDTO.getDireccion());
-        ubicacion.setCiudad(ubicacionDTO.getCiudad());
-        ubicacion.setPais(ubicacionDTO.getPais());
-        locationRepository.save(ubicacion);
-        return convertToDTO(ubicacion);
+        location.setDireccion(locationDTO.getDireccion());
+        location.setCiudad(locationDTO.getCiudad());
+        location.setPais(locationDTO.getPais());
+        locationRepository.save(location);
+        return convertToDTO(location);
     }
 
     public void deleteLocation(Long id) {
-        Location ubicacion = locationRepository.findById(id)
+        Location location = locationRepository.findById(id)
                 .orElseThrow(() -> new LocationNotFoundException("Ubicación no encontrada"));
-        locationRepository.delete(ubicacion);
+        locationRepository.delete(location);
     }
-    */
-    private LocationDto convertToDTO(Location ubicacion) {
-        LocationDto ubicacionDTO = new LocationDto();
-        ubicacionDTO.setId(ubicacion.getId());
-        ubicacionDTO.setDireccion(ubicacion.getDireccion());
-        ubicacionDTO.setCiudad(ubicacion.getCiudad());
-        ubicacionDTO.setPais(ubicacion.getPais());
-        return ubicacionDTO;
+
+    private LocationDto convertToDTO(Location location) {
+        LocationDto locationDTO = new LocationDto();
+        locationDTO.setId(location.getId());
+        locationDTO.setDireccion(location.getDireccion());
+        locationDTO.setCiudad(location.getCiudad());
+        locationDTO.setPais(location.getPais());
+        return locationDTO;
     }
 }

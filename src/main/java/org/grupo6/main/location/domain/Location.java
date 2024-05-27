@@ -15,8 +15,8 @@ public class Location {
     private String ciudad;
     private String pais;
 
-    @OneToMany(mappedBy = "ubicacion")
-    private List<Restaurant> restaurantes;
+    @OneToMany(mappedBy = "location")
+    private List<Restaurant> restaurants;
 
     // Getters and Setters
 
@@ -52,11 +52,11 @@ public class Location {
         this.pais = pais;
     }
 
-    public List<Restaurant> getRestaurantes() {
-        return restaurantes;
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
     }
 
-    public void setRestaurantes(List<Restaurant> restaurantes) {
-        this.restaurantes = restaurantes;
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 }

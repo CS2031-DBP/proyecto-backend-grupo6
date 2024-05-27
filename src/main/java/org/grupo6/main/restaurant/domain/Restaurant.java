@@ -1,6 +1,7 @@
 package org.grupo6.main.restaurant.domain;
 
 import jakarta.persistence.*;
+import org.grupo6.main.location.domain.Location;
 
 import java.util.List;
 
@@ -15,24 +16,24 @@ public class Restaurant {
     private String descripcion;
 
     //Relaciones
-    /*
-    @ManyToOne
-    @JoinColumn(name = "ubicacion_id")
-    private Ubicacion ubicacion;
 
-    @OneToMany(mappedBy = "restaurante")
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
+/*
+    @OneToMany(mappedBy = "restaurant")
     private List<Reserva> reservas;
 
-    @OneToMany(mappedBy = "restaurante")
+    @OneToMany(mappedBy = "restaurant")
     private List<Reseña> reseñas;
 
-    @OneToMany(mappedBy = "restaurante")
+    @OneToMany(mappedBy = "restaurant")
     private List<Evento> eventos;
 
     @ManyToMany
     @JoinTable(
-            name = "restaurante_promocion",
-            joinColumns = @JoinColumn(name = "restaurante_id"),
+            name = "restaurant_promocion",
+            joinColumns = @JoinColumn(name = "restaurant_id"),
             inverseJoinColumns = @JoinColumn(name = "promocion_id")
     )
     private List<Promocion> promociones;
@@ -62,15 +63,15 @@ public class Restaurant {
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
-    /*
-    public Ubicacion getUbicacion() {
-        return ubicacion;
+
+    public Location getLocation() {
+        return location;
     }
 
-    public void setUbicacion(Ubicacion ubicacion) {
-        this.ubicacion = ubicacion;
+    public void setLocation(Location location) {
+        this.location = location;
     }
-
+/*
     public List<Reserva> getReservas() {
         return reservas;
     }
