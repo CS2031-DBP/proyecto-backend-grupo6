@@ -2,6 +2,7 @@ package org.grupo6.main.config;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -9,7 +10,8 @@ import java.util.Date;
 @Service
 public class JwtService {
 
-    private final String SECRET_KEY = "your_secret_key"; // Debe ser almacenada de forma segura
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
     public String generateToken(String username) {
         return JWT.create()
