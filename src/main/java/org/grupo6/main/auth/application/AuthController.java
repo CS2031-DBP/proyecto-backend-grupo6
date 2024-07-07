@@ -6,6 +6,7 @@ import org.grupo6.main.auth.DTO.JwtAuthResponse;
 import org.grupo6.main.auth.DTO.LoginReq;
 import org.grupo6.main.auth.DTO.RegisterReq;
 import org.grupo6.main.auth.exception.UserAlreadyExistException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,6 +35,7 @@ public class AuthController {
         usuario.setUsername(registerReq.getUsername());
         usuario.setPassword(passwordEncoder.encode(registerReq.getPassword()));
         usuario.setEmail(registerReq.getEmail());
+        usuario.setNombre(registerReq.getNombre()); // Asignar la propiedad nombre
         usuarioRepository.save(usuario);
         return ResponseEntity.ok("User registered successfully");
     }

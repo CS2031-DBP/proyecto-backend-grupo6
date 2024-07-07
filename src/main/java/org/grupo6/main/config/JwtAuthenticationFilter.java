@@ -10,10 +10,11 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 @Component
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
@@ -35,15 +36,24 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
-        return authenticationManager.authenticate(authenticationToken);
+        try {
+            Map<String, String> credentials = new ObjectMapper().readValue(request.getInputStream(), Map.class);
+            String username = credentials.get("username");
+            String password = credentials.get("password");
+            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
+            return authenticationManager.authenticate(authenticationToken);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) throws IOException {
         String token = jwtService.generateToken(((org.springframework.security.core.userdetails.User) authResult.getPrincipal()).getUsername());
         response.addHeader("Authorization", "Bearer " + token);
+        response.setContentType("application/json");
+        response.getWriter().write("{\"token\": \"" + token + "\"}");
+        response.getWriter().flush();
     }
+
 }
