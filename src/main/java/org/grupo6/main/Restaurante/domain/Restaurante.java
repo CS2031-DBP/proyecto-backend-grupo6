@@ -22,13 +22,13 @@ public class Restaurante {
     private Ubicacion ubicacion;
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reserva> reservas;
+    private List<Reserva> reservas = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Reseña> reseñas;
+    private List<Reseña> reseñas = new ArrayList<>();
 
     @OneToMany(mappedBy = "restaurante", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Evento> eventos;
+    private List<Evento> eventos = new ArrayList<>();
 
     @ManyToMany
     @JoinTable(
@@ -36,22 +36,17 @@ public class Restaurante {
             joinColumns = @JoinColumn(name = "restaurante_id"),
             inverseJoinColumns = @JoinColumn(name = "promocion_id")
     )
-    private List<Promocion> promociones;
-
+    private List<Promocion> promociones = new ArrayList<>();
 
     public Restaurante(Long id, String nombre, Ubicacion ubicacion) {
         this.id = id;
         this.nombre = nombre;
         this.ubicacion = ubicacion;
     }
-    public Restaurante(){
 
+    public Restaurante() {
     }
 
-    public Restaurante(Long id, String restauranteExistente, String ubicaciónExistente) {
-    }
-
-    // Getters and Setters
     public Long getId() {
         return id;
     }

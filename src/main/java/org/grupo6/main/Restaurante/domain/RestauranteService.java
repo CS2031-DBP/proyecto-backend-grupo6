@@ -1,14 +1,12 @@
 package org.grupo6.main.Restaurante.domain;
 
-
 import org.grupo6.main.Exception.RestauranteNotFoundException;
 import org.grupo6.main.Restaurante.DTO.RestauranteDTO;
 import org.grupo6.main.Restaurante.infrastructure.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class RestauranteService {
@@ -16,9 +14,9 @@ public class RestauranteService {
     @Autowired
     private RestauranteRepository restauranteRepository;
 
-    public List<RestauranteDTO> getAllRestaurantes() {
-        List<Restaurante> restaurantes = restauranteRepository.findAll();
-        return restaurantes.stream().map(this::convertToDTO).collect(Collectors.toList());
+    public Page<RestauranteDTO> getRestaurantesPaginados(int page, int size) {
+        Page<Restaurante> restaurantes = restauranteRepository.findAll(PageRequest.of(page, size));
+        return restaurantes.map(this::convertToDTO);
     }
 
     public RestauranteDTO createRestaurante(RestauranteDTO restauranteDTO) {
