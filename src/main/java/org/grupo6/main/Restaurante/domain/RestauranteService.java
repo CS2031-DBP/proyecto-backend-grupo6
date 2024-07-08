@@ -23,9 +23,21 @@ public class RestauranteService {
         Restaurante restaurante = new Restaurante();
         restaurante.setNombre(restauranteDTO.getNombre());
         restaurante.setUbicacion(restauranteDTO.getUbicacion());
+        System.out.println("Recibido RestauranteDTO: " + restauranteDTO); // Log DTO recibido
         restauranteRepository.save(restaurante);
+        System.out.println("Guardado Restaurante: " + restaurante); // Log entidad guardada
         return convertToDTO(restaurante);
     }
+
+    private RestauranteDTO convertToDTO(Restaurante restaurante) {
+        RestauranteDTO restauranteDTO = new RestauranteDTO();
+        restauranteDTO.setId(restaurante.getId());
+        restauranteDTO.setNombre(restaurante.getNombre());
+        restauranteDTO.setUbicacion(restaurante.getUbicacion());
+        System.out.println("Convertido RestauranteDTO: " + restauranteDTO); // Log DTO convertido
+        return restauranteDTO;
+    }
+
 
     public RestauranteDTO getRestauranteById(Long id) {
         Restaurante restaurante = restauranteRepository.findById(id)
@@ -46,13 +58,5 @@ public class RestauranteService {
         Restaurante restaurante = restauranteRepository.findById(id)
                 .orElseThrow(() -> new RestauranteNotFoundException("Restaurante no encontrado"));
         restauranteRepository.delete(restaurante);
-    }
-
-    private RestauranteDTO convertToDTO(Restaurante restaurante) {
-        RestauranteDTO restauranteDTO = new RestauranteDTO();
-        restauranteDTO.setId(restaurante.getId());
-        restauranteDTO.setNombre(restaurante.getNombre());
-        restauranteDTO.setUbicacion(restaurante.getUbicacion());
-        return restauranteDTO;
     }
 }
